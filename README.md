@@ -86,36 +86,7 @@ A continuación se muestra la verificación visual con los 24 parches ubicados e
 
 ---
 
-## 3. Uso del Código
-
-### Dependencias
-
-Instalar las dependencias listadas en `requirements.txt`:
-
-```bash
-pip install -r requirements.txt
-```
-
-### Ejecución
-
-Ejecutar el script principal:
-
-```bash
-python main.py
-```
-
-El script genera en la carpeta `resultados/`:
-- `Amarillo_corregida.jpg`
-- `Azul_corregida.jpg`
-- `Cian_corregida.jpg`
-- `Magenta_corregida.jpg`
-- `Rojo_corregida.jpg`
-- `Verde_corregida.jpg`
-- `verificacion_parches.jpg` (mosaico de validación de parches)
-
----
-
-## 4. Resultados
+## 3. Resultados
 
 ### Referencia (Luz Blanca)
 ![Referencia](fotos/Referencia.JPG)
@@ -132,16 +103,3 @@ El script genera en la carpeta `resultados/`:
 | **Cian** | ![Cian Original](fotos/Cian.JPG) | ![Cian Corregida](resultados/Cian_corregida.jpg) |
 
 En los casos de luz roja, verde y magenta, la matriz elimina la dominante casi en su totalidad, restaurando el tono de la camiseta, la piel y el entorno a niveles muy cercanos a la referencia. En los casos de luz amarilla, azul y cian, la corrección neutraliza la dominante sobre la persona y la carta, aunque aparecen limitaciones asociadas a las condiciones de captura.
-
----
-
-## 5. Limitaciones del Método
-
-1. **Compresión JPEG y procesamiento interno de la cámara**:
-   Las fotos fueron capturadas en formato JPEG. La cámara ya aplicó interpolación de Bayer, balance de blancos automático preliminar, mapeo tonal con curvas en S y compresión con pérdida. Aunque la función inversa de sRGB aproxima la respuesta a valores proporcionales a la radiancia, no recupera la linealidad pura de un archivo RAW sin procesar.
-
-2. **Luces saturadas y baja relación señal/ruido (SNR)**:
-   Bajo fuentes de luz muy saturadas, ciertos canales reciben muy poca energía luminosa. Por ejemplo, bajo luz amarilla, los fotosensores azules registran valores casi nulos en parches oscuros. Al aplicar la transformación inversa para reconstruir el color blanco, la matriz amplifica drásticamente ese canal, magnificando el ruido de cuantización y los artefactos de compresión.
-
-3. **Iluminación espacialmente no uniforme (fuentes mixtas)**:
-   El modelo asume que toda la escena está iluminada por una única fuente de luz homogénea. En las imágenes se observa que la luz coloreada proviene de un foco direccional frontal sobre la persona, mientras que el techo y el fondo reciben luz blanca de tubos fluorescentes. Al calcular una matriz global basada en la carta que sostiene la persona, el fondo (que ya recibía luz blanca) adquiere un tinte complementario no deseado.
