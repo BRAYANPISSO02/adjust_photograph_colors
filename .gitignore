@@ -1,0 +1,5 @@
+# Ignore Python cache files
+/home/brayanpisso/Desktop/AVAT/Color_adjustment/__pycache__
+
+# Ignore virtual environment directories
+/home/brayanpisso/Desktop/AVAT/Color_adjustment/venv
