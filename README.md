@@ -48,7 +48,9 @@ $$\min_{\mathbf{M}} \|\mathbf{Y} - \mathbf{M} \mathbf{X}\|_F^2$$
 
 Expandiendo la función de costo:
 
-$$\mathcal{J}(\mathbf{M}) = \operatorname{Tr}\left((\mathbf{Y} - \mathbf{M} \mathbf{X})(\mathbf{Y} - \mathbf{M} \mathbf{X})^T\right) = \operatorname{Tr}\left(\mathbf{Y}\mathbf{Y}^T - 2 \mathbf{M}\mathbf{X}\mathbf{Y}^T + \mathbf{M}\mathbf{X}\mathbf{X}^T\mathbf{M}^T\right)$$
+$$
+\mathcal{J}(\mathbf{M}) = \mathrm{Tr}\left((\mathbf{Y} - \mathbf{M}\mathbf{X})(\mathbf{Y} - \mathbf{M}\mathbf{X})^T\right) = \mathrm{Tr}\left(\mathbf{Y}\mathbf{Y}^T - 2\mathbf{M}\mathbf{X}\mathbf{Y}^T + \mathbf{M}\mathbf{X}\mathbf{X}^T\mathbf{M}^T\right)
+$$
 
 Derivando con respecto a la matriz $\mathbf{M}$ e igualando a cero:
 
@@ -74,7 +76,7 @@ La carta ColorChecker Passport abierta presenta en su página derecha la rejilla
 - Esquina inferior izquierda: parche piel oscura (*dark skin*).
 - Esquina inferior derecha: parche blanco (*white*).
 
-Dado que la persona mueve levemente la mano entre tomas y las dominantes de color dificultan la detección automática por gradientes, se especifican en `corners_config.json` las coordenadas de tres esquinas clave $(\mathbf{p}_{TL}, \mathbf{p}_{TR}, \mathbf{p}_{BL})$ para cada foto. Las posiciones de los 24 centros se obtienen por interpolación de paralelogramo:
+Dado que la persona mueve levemente la mano entre tomas y las dominantes de color dificultan la detección automática por gradientes, se especifican en `corners_config.json` las coordenadas de tres esquinas clave $`(\mathbf{p}_{TL}, \mathbf{p}_{TR}, \mathbf{p}_{BL})`$ para cada foto. Las posiciones de los 24 centros se obtienen por interpolación de paralelogramo:
 
 $$\mathbf{p}(r, c) = \mathbf{p}_{TL} + \frac{c}{3} (\mathbf{p}_{TR} - \mathbf{p}_{TL}) + \frac{r}{5} (\mathbf{p}_{BL} - \mathbf{p}_{TL})$$
 
